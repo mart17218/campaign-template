@@ -11,7 +11,9 @@
   "dependencies": {
     "core-js": "^3.8.3",
     "material-icons": "^0.5.3",
-    "nuxt": "^2.14.12"
+    "nuxt": "^2.14.12",
+    "quasar-extras": "^2.0.9",
+    "quasar-framework": "^0.17.20"
   },
   "devDependencies": {
     "@nuxtjs/style-resources": "^1.0.0",

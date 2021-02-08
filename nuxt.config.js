@@ -19,9 +19,10 @@ export default {
     'material-icons/iconfont/material-icons.scss'
   ],
   styleResources: {
-    scss: ['./assets/css/_variables.scss']
+    scss: ['~/assets/css/_variables.scss']
   },
   plugins: [
+    '~/plugins/quasar'
   ],
   components: true,
   buildModules: [
