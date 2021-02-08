@@ -22,7 +22,7 @@ export default {
     scss: ['~/assets/css/_variables.scss']
   },
   plugins: [
-    '~/plugins/quasar'
+    { src: '~/plugins/quasar', ssr: false }
   ],
   components: true,
   buildModules: [

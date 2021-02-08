@@ -1,34 +1,43 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        campaign-template
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+  <div class="index-container">
+    <div class="w-1/2 p-4">
+      <h5 class="mb-4">版型選擇</h5>
+      <div>
+        <label class="block">選單列</label>
+        <q-radio v-for="mode in options.mode" :key="mode" v-model="value.mode" :val="mode" :label="mode" />
+        <label class="block">文字排列</label>
+        <q-radio v-for="align in options.align" :key="align" v-model="value.align" :val="align" :label="align" />
+      </div>
+    </div>
+    <div class="bg-gray-200 w-1/2 p-4">
+      <div class="bg-white h-full rounded p-2">
+        <preview-content />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+import previewContent from '~/components/previewContent'
+
+export default {
+  name: 'index',
+  data() {
+    return {
+      value: {
+        mode: 'light',
+        align: 'left'
+      },
+      options: {
+        mode: ['light', 'dark'],
+        align: ['left', 'right']
+      }
+    }
+  },
+  components: {
+    previewContent
+  }
+}
 </script>
 
 <style>
@@ -37,42 +46,9 @@ export default {}
 @apply min-h-screen flex justify-center items-center text-center mx-auto;
 }
 */
-.container {
-  margin: 0 auto;
+.index-container {
+  @apply flex;
+  width: 100%;
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
 }
 </style>
