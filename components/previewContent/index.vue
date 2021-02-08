@@ -3,6 +3,8 @@
     <navigation />
     <banner />
     <text-section />
+    <tour-section />
+    <link-section />
   </div>
 </template>
 
@@ -10,6 +12,8 @@
 import navigation from './navigation'
 import banner from './banner'
 import textSection from './textSection'
+import tourSection from './tourSection'
+import linkSection from './linkSection'
 
 export default {
   props: {
@@ -27,7 +31,9 @@ export default {
   components: {
     navigation,
     banner,
-    textSection
+    textSection,
+    tourSection,
+    linkSection
   }
 }
 </script>

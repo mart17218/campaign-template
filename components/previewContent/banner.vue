@@ -15,6 +15,6 @@ export default {
 <style lang="scss" scoped>
 .preview-banner {
   @apply bg-gray-100;
-  height: 300px;
+  height: 260px;
 }
 </style>

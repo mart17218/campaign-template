@@ -20,7 +20,7 @@ export default {
 
 <style lang="scss" scoped>
 .preview-text-section {
-  @apply flex px-4 py-8;
+  @apply flex px-4 py-4;
   &__image {
     @apply bg-gray-100 mr-4 w-1/3;
     height: 120px;
