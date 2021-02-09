@@ -1,14 +1,20 @@
 <template>
   <div class="index-container">
-    <div class="w-1/2 p-4">
+    <div class="w-1/2 p-4 overflow-y-auto">
       <h5 class="mb-4">樣式設定</h5>
       <div>
         <label class="block">選單列</label>
         <q-radio v-for="mode in options.mode" :key="mode" v-model="value.mode" :val="mode" :label="mode" />
         <hr class="my-4" />
       </div>
-      <h5 class="mb-4">版型選擇</h5>
+      <h5 class="mb-4">版型配置</h5>
       <div>
+        <label-card :title="`圖片區塊`" class="mb-2">
+          <template v-slot:content>
+            <label class="block">圖片連結</label>
+            <q-input v-model="value.bannerUrl" filled />
+          </template>
+        </label-card>
         <label-card :title="`文字區塊`" class="mb-2">
           <template v-slot:content>
             <label class="block">排列方式</label>
@@ -17,11 +23,11 @@
             <q-input v-model="value.textContent" filled />
           </template>
         </label-card>
-        <label-card :title="`圖片區塊`" class="mb-2">
-          <template v-slot:content>
-            <label class="block">圖片連結</label>
-            <q-input v-model="value.bannerUrl" filled />
-          </template>
+        <label-card :title="`行程區塊`" class="mb-2">
+          <template v-slot:content></template>
+        </label-card>
+        <label-card :title="`連結區塊`" class="mb-2">
+          <template v-slot:content></template>
         </label-card>
         <label-card :title="`按鈕`" class="mb-2">
           <template v-slot:content>
