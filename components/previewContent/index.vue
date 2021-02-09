@@ -1,8 +1,12 @@
 <template>
   <div>
-    <navigation />
+    <navigation
+      :mode="navTheme"
+    />
     <banner />
-    <text-section />
+    <text-section
+      :mode="align"
+    />
     <tour-section />
     <link-section />
   </div>
@@ -17,7 +21,7 @@ import linkSection from './linkSection'
 
 export default {
   props: {
-    navigation: {
+    navTheme: {
       type: String
     },
     banner: {

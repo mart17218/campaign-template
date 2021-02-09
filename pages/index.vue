@@ -11,7 +11,10 @@
     </div>
     <div class="bg-gray-200 w-1/2 p-4">
       <div class="bg-white h-full rounded p-2">
-        <preview-content />
+        <preview-content
+          :nav-theme="value.mode"
+          :align="value.align"
+        />
       </div>
     </div>
   </div>
@@ -30,7 +33,7 @@ export default {
       },
       options: {
         mode: ['light', 'dark'],
-        align: ['left', 'right']
+        align: ['left', 'right', 'center']
       }
     }
   },
