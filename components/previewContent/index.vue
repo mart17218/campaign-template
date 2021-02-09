@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mb-2">
     <navigation
       :mode="navTheme"
     />
@@ -10,6 +10,7 @@
     />
     <tour-section />
     <link-section />
+    <customized-button :text="buttonText" />
   </div>
 </template>
 
@@ -19,6 +20,7 @@ import banner from './banner'
 import textSection from './textSection'
 import tourSection from './tourSection'
 import linkSection from './linkSection'
+import customizedButton from './button'
 
 export default {
   props: {
@@ -34,6 +36,9 @@ export default {
     },
     textContent: {
       type: String
+    },
+    buttonText: {
+      type: String
     }
   },
   components: {
@@ -41,7 +46,8 @@ export default {
     banner,
     textSection,
     tourSection,
-    linkSection
+    linkSection,
+    customizedButton
   }
 }
 </script>

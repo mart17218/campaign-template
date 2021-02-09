@@ -11,6 +11,8 @@
         <q-input v-model="value.textContent" filled />
         <label class="block">首圖連結</label>
         <q-input v-model="value.bannerUrl" filled />
+        <label class="block">按鈕</label>
+        <q-input v-model="value.buttonText" filled />
       </div>
     </div>
     <div class="bg-gray-200 w-1/2 p-4">
@@ -20,6 +22,7 @@
           :align="value.align"
           :text-content="value.textContent"
           :banner-url="value.bannerUrl"
+          :button-text="value.buttonText"
         />
       </div>
     </div>
@@ -37,7 +40,8 @@ export default {
         mode: 'light',
         bannerUrl: '',
         align: 'left',
-        textContent: '內容文字'
+        textContent: '內容文字',
+        buttonText: '預設文字'
       },
       options: {
         mode: ['light', 'dark'],
