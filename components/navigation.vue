@@ -9,6 +9,6 @@
 <style lang="scss" scoped>
 .navigation {
   @apply bg-black flex items-center;
-  height: 56px;
+  height: $navigationHeight;
 }
 </style>

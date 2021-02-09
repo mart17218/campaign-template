@@ -3,18 +3,18 @@
     <template v-if="getStatus === ALIGN_LEFT">
       <div class="preview-text-section__image"></div>
       <div class="flex items-center w-2/3">
-        <div>{{ text }}</div>
+        <div>{{ content }}</div>
       </div>
     </template>
     <template v-else-if="getStatus === ALIGN_RIGHT">
       <div class="flex items-center w-2/3">
-        <div>{{ text }}</div>
+        <div>{{ content }}</div>
       </div>
       <div class="preview-text-section__image"></div>
     </template>
     <template v-else-if="getStatus === ALIGN_CENTER">
       <div class="flex items-center justify-center w-full">
-        <div>{{ text }}</div>
+        <div class="text-center">{{ content }}</div>
       </div>
     </template>
   </div>
@@ -27,7 +27,7 @@ export default {
     mode: {
       type: String
     },
-    text: {
+    content: {
       type: String,
       default: '文字'
     }
@@ -55,7 +55,7 @@ export default {
 <style lang="scss" scoped>
 .preview-text-section {
   @apply flex px-4 py-4;
-  height: 140px;
+  min-height: 140px;
   &__image {
     @apply bg-gray-100 mr-4 w-1/3;
   }

@@ -25,7 +25,7 @@ export default {
 
 <style lang="scss" scoped>
 .preview-link-section {
-  @apply py-4;
+  @apply p-4;
   &__container {
     @apply border border-gray-200 flex rounded;
     $perColumn: 2;

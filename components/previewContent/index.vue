@@ -6,6 +6,7 @@
     <banner :url="bannerUrl" />
     <text-section
       :mode="align"
+      :content="textContent"
     />
     <tour-section />
     <link-section />
@@ -29,6 +30,9 @@ export default {
       default: ''
     },
     align: {
+      type: String
+    },
+    textContent: {
       type: String
     }
   },

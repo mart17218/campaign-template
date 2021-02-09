@@ -15,7 +15,7 @@
 
 <style lang="scss" scoped>
 .preview-tour-section {
-  @apply py-4;
+  @apply p-4;
   &__tour {
     @apply border border-gray-200 rounded;
     $perColumn: 3;

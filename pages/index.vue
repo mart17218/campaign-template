@@ -7,15 +7,18 @@
         <q-radio v-for="mode in options.mode" :key="mode" v-model="value.mode" :val="mode" :label="mode" />
         <label class="block">文字排列</label>
         <q-radio v-for="align in options.align" :key="align" v-model="value.align" :val="align" :label="align" />
-        <label class="block">banner</label>
+        <label class="block">文字內容</label>
+        <q-input v-model="value.textContent" filled />
+        <label class="block">首圖連結</label>
         <q-input v-model="value.bannerUrl" filled />
       </div>
     </div>
     <div class="bg-gray-200 w-1/2 p-4">
-      <div class="bg-white h-full rounded p-2">
+      <div class="bg-white h-full overflow-y-auto rounded">
         <preview-content
           :nav-theme="value.mode"
           :align="value.align"
+          :text-content="value.textContent"
           :banner-url="value.bannerUrl"
         />
       </div>
@@ -33,7 +36,8 @@ export default {
       value: {
         mode: 'light',
         bannerUrl: '',
-        align: 'left'
+        align: 'left',
+        textContent: '內容文字'
       },
       options: {
         mode: ['light', 'dark'],
@@ -47,7 +51,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 /* Sample `apply` at-rules with Tailwind CSS
 .container {
 @apply min-h-screen flex justify-center items-center text-center mx-auto;
@@ -56,6 +60,9 @@ export default {
 .index-container {
   @apply flex;
   width: 100%;
-  min-height: 100vh;
+  height: calc(100vh - #{$navigationHeight});
+  label {
+    @apply mt-4;
+  }
 }
 </style>
