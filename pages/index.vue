@@ -1,18 +1,34 @@
 <template>
   <div class="index-container">
     <div class="w-1/2 p-4">
-      <h5 class="mb-4">版型選擇</h5>
+      <h5 class="mb-4">樣式設定</h5>
       <div>
         <label class="block">選單列</label>
         <q-radio v-for="mode in options.mode" :key="mode" v-model="value.mode" :val="mode" :label="mode" />
-        <label class="block">文字排列</label>
-        <q-radio v-for="align in options.align" :key="align" v-model="value.align" :val="align" :label="align" />
-        <label class="block">文字內容</label>
-        <q-input v-model="value.textContent" filled />
-        <label class="block">首圖連結</label>
-        <q-input v-model="value.bannerUrl" filled />
-        <label class="block">按鈕</label>
-        <q-input v-model="value.buttonText" filled />
+        <hr class="my-4" />
+      </div>
+      <h5 class="mb-4">版型選擇</h5>
+      <div>
+        <label-card :title="`文字區塊`" class="mb-2">
+          <template v-slot:content>
+            <label class="block">排列方式</label>
+            <q-radio v-for="align in options.align" :key="align" v-model="value.align" :val="align" :label="align" />
+            <label class="block">內容</label>
+            <q-input v-model="value.textContent" filled />
+          </template>
+        </label-card>
+        <label-card :title="`圖片區塊`" class="mb-2">
+          <template v-slot:content>
+            <label class="block">圖片連結</label>
+            <q-input v-model="value.bannerUrl" filled />
+          </template>
+        </label-card>
+        <label-card :title="`按鈕`" class="mb-2">
+          <template v-slot:content>
+            <label class="block">文字</label>
+            <q-input v-model="value.buttonText" filled />
+          </template>
+        </label-card>
       </div>
     </div>
     <div class="bg-gray-200 w-1/2 p-4">
@@ -31,6 +47,7 @@
 
 <script>
 import previewContent from '~/components/previewContent'
+import labelCard from '~/components/labelCard'
 
 export default {
   name: 'index',
@@ -50,7 +67,8 @@ export default {
     }
   },
   components: {
-    previewContent
+    previewContent,
+    labelCard
   }
 }
 </script>
@@ -65,8 +83,5 @@ export default {
   @apply flex;
   width: 100%;
   height: calc(100vh - #{$navigationHeight});
-  label {
-    @apply mt-4;
-  }
 }
 </style>
