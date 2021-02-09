@@ -3,7 +3,7 @@
     <navigation
       :mode="navTheme"
     />
-    <banner />
+    <banner :url="bannerUrl" />
     <text-section
       :mode="align"
     />
@@ -24,7 +24,7 @@ export default {
     navTheme: {
       type: String
     },
-    banner: {
+    bannerUrl: {
       type: String,
       default: ''
     },

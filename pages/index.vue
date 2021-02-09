@@ -7,6 +7,8 @@
         <q-radio v-for="mode in options.mode" :key="mode" v-model="value.mode" :val="mode" :label="mode" />
         <label class="block">文字排列</label>
         <q-radio v-for="align in options.align" :key="align" v-model="value.align" :val="align" :label="align" />
+        <label class="block">banner</label>
+        <q-input v-model="value.bannerUrl" filled />
       </div>
     </div>
     <div class="bg-gray-200 w-1/2 p-4">
@@ -14,6 +16,7 @@
         <preview-content
           :nav-theme="value.mode"
           :align="value.align"
+          :banner-url="value.bannerUrl"
         />
       </div>
     </div>
@@ -29,6 +32,7 @@ export default {
     return {
       value: {
         mode: 'light',
+        bannerUrl: '',
         align: 'left'
       },
       options: {
