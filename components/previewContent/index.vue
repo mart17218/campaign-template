@@ -9,7 +9,7 @@
       :content="textContent"
     />
     <tour-section :tour-list="tourList" />
-    <link-section />
+    <link-section :article-list="articleList" />
     <customized-button :text="buttonText" />
   </div>
 </template>
@@ -38,6 +38,9 @@ export default {
       type: String
     },
     tourList: {
+      type: Array
+    },
+    articleList: {
       type: Array
     },
     buttonText: {

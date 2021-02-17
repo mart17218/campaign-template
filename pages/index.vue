@@ -36,7 +36,16 @@
           </template>
         </label-card>
         <label-card :title="`連結區塊`" class="mb-2">
-          <template v-slot:content></template>
+          <template v-slot:content>
+            <div>
+              <div v-for="article in value.articleList" :key="article.id">{{ article }}</div>
+            </div>
+            <div class="mt-2">
+              <q-btn color="white" text-color="black" @click="addLink">
+                <span class="material-icons-round text-sm">add</span>新增連結
+              </q-btn>
+            </div>
+          </template>
         </label-card>
         <label-card :title="`按鈕`" class="mb-2">
           <template v-slot:content>
@@ -53,6 +62,7 @@
           :align="value.align"
           :text-content="value.textContent"
           :tour-list="value.tourList"
+          :article-list="value.articleList"
           :banner-url="value.bannerUrl"
           :button-text="value.buttonText"
         />
@@ -70,6 +80,10 @@ const defaultTour = {
   price: 0
 }
 
+const defaultLink = {
+  title: '連結'
+}
+
 export default {
   name: 'index',
   data() {
@@ -80,7 +94,8 @@ export default {
         align: 'left',
         textContent: '內容文字',
         buttonText: '預設文字',
-        tourList: [{ id: 0, ...defaultTour }]
+        tourList: [{ id: 0, ...defaultTour }],
+        articleList: [{ id: 0, ...defaultLink }]
       },
       options: {
         mode: ['light', 'dark'],
@@ -96,6 +111,10 @@ export default {
     addTour() {
       const id = this.value.tourList.length
       this.value.tourList.push({ id, ...defaultTour })
+    },
+    addLink() {
+      const id = this.value.articleList.length
+      this.value.articleList.push({ id, ...defaultLink })
     }
   }
 }

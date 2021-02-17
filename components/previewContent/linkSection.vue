@@ -2,10 +2,10 @@
   <div class="preview-link-section">
     <div class="mb-2">標題文字</div>
     <div class="flex">
-      <div v-for="index in 5" :key="index" class="preview-link-section__container">
+      <div v-for="(article, index) in articleList" :key="index" class="preview-link-section__container">
         <div class="preview-link-section__image"></div>
         <div class="p-1">
-          <div class="text-gray-900 text-xs">外部連結標題</div>
+          <div class="text-gray-900 text-xs">{{ article.title }}</div>
         </div>
       </div>
     </div>
@@ -15,9 +15,8 @@
 <script>
 export default {
   props: {
-    mode: {
-      type: String,
-      default: '預設文字'
+    articleList: {
+      type: Array
     }
   }
 }
