@@ -24,7 +24,16 @@
           </template>
         </label-card>
         <label-card :title="`行程區塊`" class="mb-2">
-          <template v-slot:content></template>
+          <template v-slot:content>
+            <div>
+              <div v-for="tour in value.tourList" :key="tour.id">{{ tour }}</div>
+            </div>
+            <div class="mt-2">
+              <q-btn color="white" text-color="black" @click="addTour">
+                <span class="material-icons-round text-sm">add</span>新增行程
+              </q-btn>
+            </div>
+          </template>
         </label-card>
         <label-card :title="`連結區塊`" class="mb-2">
           <template v-slot:content></template>
@@ -43,6 +52,7 @@
           :nav-theme="value.mode"
           :align="value.align"
           :text-content="value.textContent"
+          :tour-list="value.tourList"
           :banner-url="value.bannerUrl"
           :button-text="value.buttonText"
         />
@@ -55,6 +65,11 @@
 import previewContent from '~/components/previewContent'
 import labelCard from '~/components/labelCard'
 
+const defaultTour = {
+  title: '行程',
+  price: 0
+}
+
 export default {
   name: 'index',
   data() {
@@ -64,7 +79,8 @@ export default {
         bannerUrl: '',
         align: 'left',
         textContent: '內容文字',
-        buttonText: '預設文字'
+        buttonText: '預設文字',
+        tourList: [{ id: 0, ...defaultTour }]
       },
       options: {
         mode: ['light', 'dark'],
@@ -75,6 +91,12 @@ export default {
   components: {
     previewContent,
     labelCard
+  },
+  methods: {
+    addTour() {
+      const id = this.value.tourList.length
+      this.value.tourList.push({ id, ...defaultTour })
+    }
   }
 }
 </script>

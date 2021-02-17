@@ -8,7 +8,7 @@
       :mode="align"
       :content="textContent"
     />
-    <tour-section />
+    <tour-section :tour-list="tourList" />
     <link-section />
     <customized-button :text="buttonText" />
   </div>
@@ -36,6 +36,9 @@ export default {
     },
     textContent: {
       type: String
+    },
+    tourList: {
+      type: Array
     },
     buttonText: {
       type: String
