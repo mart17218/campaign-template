@@ -5,8 +5,8 @@
       <div>
         <label class="block">選單列</label>
         <q-radio v-for="mode in options.mode" :key="mode" v-model="value.mode" :val="mode" :label="mode" />
-        <hr class="my-4" />
       </div>
+      <hr class="my-4" />
       <h5 class="mb-4">版型配置</h5>
       <div>
         <label-card :title="`圖片區塊`" class="mb-2">
@@ -54,6 +54,12 @@
           </template>
         </label-card>
       </div>
+      <hr class="my-4" />
+      <div>
+        <q-btn color="white" text-color="black" @click="createHTML">
+          <span class="material-icons-round text-sm">add_task</span>建立頁面
+        </q-btn>
+      </div>
     </div>
     <div class="bg-gray-200 w-1/2 p-4">
       <div class="bg-white h-full overflow-y-auto rounded">
@@ -72,6 +78,8 @@
 </template>
 
 <script>
+import _ from 'lodash'
+
 import previewContent from '~/components/previewContent'
 import labelCard from '~/components/labelCard'
 
@@ -90,7 +98,7 @@ export default {
     return {
       value: {
         mode: 'light',
-        bannerUrl: '',
+        bannerUrl: 'https://i.picsum.photos/id/443/1920/1080.jpg?hmac=2ytXxIfSqJJvHgejfw8BPw3FnZyP0-1Du1w9lDW8eFQ',
         align: 'left',
         textContent: '內容文字',
         buttonText: '預設文字',
@@ -100,7 +108,48 @@ export default {
       options: {
         mode: ['light', 'dark'],
         align: ['left', 'right', 'center']
-      }
+      },
+      // TODO: template 格式尚未確定
+      template: [{
+        component: 'navigation',
+        mode: 'light'
+      }, {
+        component: 'banner-full',
+        attr: {
+          style: {},
+        },
+      }, {
+        component: 'text-section-left',
+        content: '文案內容'
+      }, {
+        component: 'tour-section',
+        data: [{
+          title: '標題文字',
+          list: [{...defaultTour}]
+        }]
+      }, {
+        component: 'link-section',
+        data: [{
+          title: '標題文字',
+          list: [{...defaultLink}]
+        }]
+      }, {
+        component: 'button',
+        content: '按鈕'
+      }]
+    }
+  },
+  watch: {
+    value: {
+      handler: function () {
+        const navigationIndex = _.findIndex(this.template, { 'component': 'navigation' })
+        const bannerIndex = _.findIndex(this.template, { 'component': 'banner-full' })
+
+        this.template[navigationIndex].mode = this.value.mode
+        this.template[bannerIndex].attr.style = { 'background-image': `url: ('${this.value.bannerUrl}')` }
+      },
+      deep: true,
+      immediate: true
     }
   },
   components: {
@@ -115,6 +164,9 @@ export default {
     addLink() {
       const id = this.value.articleList.length
       this.value.articleList.push({ id, ...defaultLink })
+    },
+    createHTML() {
+      // TODO: translate json into html
     }
   }
 }
