@@ -26,7 +26,12 @@
         <label-card :title="`行程區塊`" class="mb-2">
           <template v-slot:content>
             <div>
-              <div v-for="tour in value.tourList" :key="tour.id">{{ tour }}</div>
+              <div v-for="tour in value.tourList" :key="tour.id" class="flex justify-between">
+                <span>{{ tour }}</span>
+                <div>
+                  <span class="material-icons-round text-sm cursor-pointer" @click="removeTourItem(tour.id)">delete_outline</span>
+                </div>
+              </div>
             </div>
             <div class="mt-2">
               <q-btn color="white" text-color="black" @click="addTour">
@@ -38,7 +43,12 @@
         <label-card :title="`連結區塊`" class="mb-2">
           <template v-slot:content>
             <div>
-              <div v-for="article in value.articleList" :key="article.id">{{ article }}</div>
+              <div v-for="article in value.articleList" :key="article.id" class="flex justify-between">
+                <span>{{ article }}</span>
+                <div>
+                  <span class="material-icons-round text-sm cursor-pointer" @click="removeLinkItem(article.id)">delete_outline</span>
+                </div>
+              </div>
             </div>
             <div class="mt-2">
               <q-btn color="white" text-color="black" @click="addLink">
@@ -167,6 +177,13 @@ export default {
     },
     createHTML() {
       // TODO: translate json into html
+      console.log('[Create form]: ', this.value)
+    },
+    removeTourItem(tourId) {
+      this.value.tourList = this.value.tourList.filter(tour => tour.id !== tourId)
+    },
+    removeLinkItem(linkId) {
+      this.value.articleList = this.value.articleList.filter(link => link.id !== linkId)
     }
   }
 }
