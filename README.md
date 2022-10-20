@@ -1,6 +1,6 @@
 # campaign-template
 
-> 專區生產器
+> 專區產生器
 
 ## Build Setup
 
